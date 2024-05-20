@@ -9,19 +9,24 @@ export default function Playground() {
   var [cell_two, setCellTwo] = useState("");
   var [cell_three, setCellThree] = useState("");
   var [cell_four, setCellFour] = useState("");
-  var [sum, setSum] = useState(0);
+  var [sum, setSum] = useState("0");
+  var [letters, setLetters] = useState("")
 
 
 function grabValues (value, field_value) {
   // console.log(value);
-  console.log(field_value);
-  
+  // console.log(field_value);
 
-  
+  // console.log(letters);
 
-  if (parseInt(value) !== NaN) {
+  if (isNaN(value)) {
+    setLetters(letters + value)
+    
+  } else {
     setSum(parseInt(value) + parseInt(sum));
+    console.log(value);
   }
+
 
   
 
@@ -38,12 +43,15 @@ function grabValues (value, field_value) {
             </tr>
 
             <tr>
-              <td>{sum}</td>
-              <td>{sum}</td>
-              <td>{sum}</td>
-              <td>{sum}</td>
+              <td>{cell_one}</td>
+              <td>{cell_two}</td>
+              <td>{cell_three}</td>
+              <td>{cell_four}</td>
             </tr>
         </table>
+
+        <div>Total of numbers: {sum}</div>
+        <div>String concatination: {letters}</div>
 
     </main>
   )
