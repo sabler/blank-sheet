@@ -12,36 +12,60 @@ export default function Playground() {
   var [cell_three, setCellThree] = useState("");
   var [cell_four, setCellFour] = useState("");
   var [sum, setSum] = useState("");
-  var [letters, setLetters] = useState("")
+  var [letters, setLetters] = useState("TK")
 
 
-  function clearTape () {
-// do something
+function typeCheck (userInput) {
+  let check = parseInt(userInput);
+
+  if(isNaN(check)) {
+    return "string";
+  } else {
+    return "number";
   }
+}
 
 function grabValues (value, elemId) {
-  let incomingVal = value !== "" ? value : 0;
+  let incomingVal = value !== "" ? value : "";
   let addThisArray = numberArray;
+  let printThisArray = letterArray;
 
   let subTotal = 0;
+  let completeSentence = "";
+  
 
 
+
+
+  if(!isNaN(value)) {
   addThisArray.splice((elemId-1),1,incomingVal);
   console.log(addThisArray);
+  } else {
+    printThisArray.splice((elemId-1),1,incomingVal);
+    console.log(printThisArray);
+  }
+
 
   addThisArray.forEach(number => {
     console.log(number);
+    if(!isNaN(number)) {
     subTotal += parseInt(number);
-    
+    }
   })
 
+  printThisArray.forEach(item => {
+    completeSentence += item;
+  }
+
+  );
+
+  setLetters(completeSentence);
+
+console.log(`strings!${letters}`);
   setSum(subTotal);
+  setNumberArray(addThisArray);
 
   
-  
-
-
-
 }
 
 function addValues () {
@@ -52,9 +76,7 @@ function addValues () {
 
   return (
     <main className="h-screen">
-              <table
-              onClick={() => clearTape()}
-              >
+              <table>
 
             <tr>
                 <td>A<Forms formula={addValues} callback={grabValues} id="1" /></td>
