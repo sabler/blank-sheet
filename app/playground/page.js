@@ -26,7 +26,7 @@ function typeCheck (userInput) {
 }
 
 function grabValues (value, elemId) {
-  let incomingVal = value !== "" ? value : "";
+  let incomingVal = value !== "" ? value : "0";
   let addThisArray = numberArray;
   let printThisArray = letterArray;
 

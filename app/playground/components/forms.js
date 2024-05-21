@@ -12,8 +12,7 @@ export default function Forms({formula, callback, id}) {
         <form>
             <label for= "characterEntry">Enter here</label>
                 <input name="characterEntry" id={id} type="text"
-                
-                onBlur={(e) => callback(e.target.value, id)}
+                    onBlur={(e) => callback(e.target.value, id)}
                 >
 
 
